@@ -1,3 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Work Sans", sans-serif;
+}
+@layer utilities {
+  .btn-danger {
+    @apply bg-red-600 px-14 py-3;
+  }
+  .hover-cards {
+    @apply hover:bg-blue-100 transition-all duration-300 ease-in-out text-blue-500 outline-4  outline-blue-500;
+  }
+}
+.scrollHide {
+  scrollbar-width: none;
+}

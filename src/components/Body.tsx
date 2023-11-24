@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Main from "./Main";
 const Body = () => {
   return (
-    <div className="flex flex-row flex-nowrap px-2 h-full ">
+    <div className="flex lg:flex-row flex-col h-screen">
       <Menu />
       <Main />
       <Sidebar />
