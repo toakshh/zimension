@@ -27,10 +27,6 @@ const Modal = (props: InputProps) => {
         <button
           className="btn-danger rounded-md"
           onClick={(e) => handleSubmit(e, inputVal)}
-          // onClick={(e) => {
-          //   e.preventDefault();
-          //   console.log(inputVal);
-          // }}
         >
           {btnName}
         </button>

@@ -1,6 +1,10 @@
 import React from "react";
-
-const Main = () => {
+type customType = {
+  setSlide: (para: boolean) => void;
+  slide: boolean;
+};
+const Main = (props: customType) => {
+  const { setSlide, slide } = props;
   return (
     <main className="bg-gray-400 lg:w-[55%] w-full p-10 flex flex-col justify-center items-center gap-10  overflow-scroll md:min-h-screen h-full">
       {/* project name */}
@@ -30,7 +34,10 @@ const Main = () => {
         })}
 
       {/* new operation section */}
-      <button className="rounded-full shadow-2xl bg-white px-5 py-3 text-2xl hover:bg-slate-300 ">
+      <button
+        onClick={() => setSlide(!slide)}
+        className="rounded-full shadow-2xl bg-white px-5 py-3 text-2xl hover:bg-slate-300 "
+      >
         +
       </button>
     </main>

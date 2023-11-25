@@ -3,8 +3,19 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import ModalComponent from "./ModalComponent";
 
+/**
+ *Menu Section of the app
+ *@function Component
+ *@function openModal - Opens the modal
+ *@function closeModal - Closes the modal
+ *@function handleInputChange - handles input change
+ *@function handleSubmit - handles submit
+ */
+
+type AllProjects = { name: string; operations: [] }[];
+
 const Menu = () => {
-  const [allProjects, setAllProjects] = useState(["Project Demo"]); //list of all projects
+  const [allProjects, setAllProjects] = useState<AllProjects>([]); //list of all projects
 
   // Modal handlers
   const [open, setOpen] = useState(false);
@@ -25,11 +36,15 @@ const Menu = () => {
     const regex = /^[A-Za-z0-9]+$/;
     e.preventDefault();
     if (regex.test(val)) {
-      if (allProjects.includes(val)) {
-        alert("This project already exist.");
+      if (allProjects.some((project) => project.name === val)) {
+        alert("This project already exists.");
         return;
       }
-      setAllProjects([...allProjects, val]);
+      const newProject: { name: string; operations: [] } = {
+        name: val,
+        operations: [],
+      };
+      setAllProjects((prevItems) => [...prevItems, newProject]);
       onCloseModal();
     } else {
       alert("Please use only alphanumeric characters for name.");
@@ -44,10 +59,10 @@ const Menu = () => {
           {allProjects?.map((project, i) => {
             return (
               <h4
-                key={project + i}
+                key={project.name + i}
                 className="px-20 py-4 bg-white text-gray-800 font-bold rounded-xl cursor-pointer hover:hover-cards shadow-md"
               >
-                {project}
+                {project.name}
               </h4>
             );
           })}
