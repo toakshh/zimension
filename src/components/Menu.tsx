@@ -5,7 +5,7 @@ const Menu = () => {
     <aside className="bg-blue-500 h-full lg:w-[25%] w-full rounded-xl flex flex-col justify-start items-center p-3 ">
       <h3 className="text-3xl font-extrabold text-white">ReactJs Test</h3>
       <div className="flex flex-col justify-center items-center h-full w-fullborder-2 border-black overflow-auto ">
-        <div className="flex flex-col gap-8 mb-12 min-h-max overflow-scroll scroll-smooth sm:mx-0 mx-4 scrollHide max-w-fit">
+        <div className="flex flex-col gap-8 pb-12 min-h-max overflow-scroll scroll-smooth sm:mx-0 mx-4 scrollHide max-w-fit">
           {Array(3)
             .fill("a")
             .map((e, i) => {

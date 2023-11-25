@@ -2,7 +2,7 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <aside className="lg:w-[20%] w-full bg-gray-300 flex flex-col justify-center items-center border-2 border-red-600 p-5 gap-5">
+    <aside className="lg:w-[20%] w-full bg-gray-300 flex flex-col justify-center items-center p-5 gap-5">
       <h3 className="text-lg font-light">Add New Operation </h3>
       <form className="flex flex-col lg:w-full sm:w-[50%] w-full gap-4">
         <input
@@ -10,11 +10,11 @@ const Sidebar = () => {
           placeholder="Enter name"
           className="px-2 py-2 rounded-xl border border-gray-900"
         />
-        <select>
+        <select className="px-3 py-2 text-center">
           {Array(5)
             .fill(0)
             .map((e, i) => (
-              <option key={e + i} value="i+1">
+              <option key={e + i} value="i+1" className="text-center">
                 {i + 1}
               </option>
             ))}
