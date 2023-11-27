@@ -12,6 +12,7 @@ body {
   font-family: "Work Sans", sans-serif;
   overflow-x: hidden;
   background: #9ca3af;
+  scroll-behavior: smooth;
 }
 @layer utilities {
   .btn-danger {

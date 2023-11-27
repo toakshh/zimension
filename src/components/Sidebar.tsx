@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+/* eslint-disable react-refresh/only-export-components */
+import React, { memo, useEffect, useState } from "react";
 import { dropDownValues } from "../constant/constant";
 
-type propsType = {
+type AllProjects = { name: string; operations: [] }[];
+type PropsType = {
   slide: boolean;
   setSlide: (para: boolean) => void;
+  setAllProjects: React.Dispatch<React.SetStateAction<AllProjects>>;
+  setCurrentProject: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      operations: { name: string; count: number }[];
+    }>
+  >;
+  currentProject: { name: string; operations: [] };
 };
 
-const Sidebar = (props: propsType) => {
-  const { slide, setSlide } = props;
+const Sidebar = (props: PropsType) => {
+  const { slide, setSlide, setCurrentProject, setAllProjects, currentProject } =
+    props;
   const [formData, setFormData] = useState<{
     name: string;
     count: number;
@@ -17,24 +28,56 @@ const Sidebar = (props: propsType) => {
   });
 
   // to handle change
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value.trim(),
     }));
   };
 
-  // to handle submit
+  // to handle submit/add
   const handleAdd = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!formData.name || formData.name.trim() === "") return;
-    if (!formData.count || formData.count < 1) return;
-    setFormData({
-      name: "",
-      count: 1,
-    });
-    console.log(formData);
+    if (!currentProject.name) {
+      alert("Please select/create any project to add");
+    } else {
+      if (!formData.name || formData.name.split(" ").join("") === "") {
+        alert("Please fill the operation name first ");
+        return;
+      }
+      if (!formData.count || formData.count < 1) return;
+      // setting current selected project to the current project
+      setCurrentProject((prev) => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          operations: [
+            ...prev.operations,
+            { name: formData.name, count: formData.count },
+          ],
+        };
+      });
+
+      // reseting form
+      setFormData({
+        name: "",
+        count: 1,
+      });
+    }
   };
+
+  useEffect(() => {
+    // updating allProject list once the operations is added
+    setAllProjects((prevProjects) => {
+      const updatedProjects = prevProjects.map((project) =>
+        project.name === currentProject.name ? currentProject : project
+      );
+      return updatedProjects;
+      // console.log("updated one project :", updatedProjects);
+    });
+  }, [currentProject]);
 
   return (
     <aside
@@ -88,4 +131,4 @@ const Sidebar = (props: propsType) => {
   );
 };
 
-export default Sidebar;
+export default memo(Sidebar);
