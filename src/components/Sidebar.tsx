@@ -2,7 +2,9 @@
 import React, { memo, useEffect, useState } from "react";
 import { dropDownValues } from "../constant/constant";
 
-type AllProjects = { name: string; operations: [] }[];
+// type AllProjects = { name: string; operations: [] }[];
+type CurrentProjectType = { name: string; count: number }[];
+type AllProjects = { name: string; operations: CurrentProjectType }[];
 type PropsType = {
   slide: boolean;
   setSlide: (para: boolean) => void;
@@ -13,7 +15,10 @@ type PropsType = {
       operations: { name: string; count: number }[];
     }>
   >;
-  currentProject: { name: string; operations: [] };
+  currentProject: {
+    name: string;
+    operations: { name: string; count: number }[];
+  };
 };
 
 const Sidebar = (props: PropsType) => {
@@ -48,6 +53,7 @@ const Sidebar = (props: PropsType) => {
         return;
       }
       if (!formData.count || formData.count < 1) return;
+
       // setting current selected project to the current project
       setCurrentProject((prev) => {
         if (!prev) return prev;
@@ -74,10 +80,9 @@ const Sidebar = (props: PropsType) => {
       const updatedProjects = prevProjects.map((project) =>
         project.name === currentProject.name ? currentProject : project
       );
-      return updatedProjects;
-      // console.log("updated one project :", updatedProjects);
+      return updatedProjects as AllProjects;
     });
-  }, [currentProject]);
+  }, [currentProject, setAllProjects]);
 
   return (
     <aside

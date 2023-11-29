@@ -8,6 +8,7 @@ type customType = {
     name: string;
     operations: { name: string; count: number }[];
   };
+  onDeleteOperation: (operationName: string) => void;
 };
 
 /**
@@ -16,7 +17,13 @@ type customType = {
  */
 
 const Main = (props: customType) => {
-  const { setSlide, slide, currentProject } = props;
+  const { setSlide, slide, currentProject, onDeleteOperation } = props;
+
+  // handle delete operaton
+  const handleDeleteOperation = (operationName: string) => {
+    onDeleteOperation(operationName);
+  };
+  // console.log(allProjects);
 
   return (
     <main className="bg-gray-400 lg:w-[55%] w-full p-10 flex flex-col justify-center items-center gap-10   md:min-h-screen h-full">
@@ -45,7 +52,10 @@ const Main = (props: customType) => {
                 <div className="bg-gray-700 text-xl text-white font-semibold py-3 px-10 rounded-md">
                   {e.count}
                 </div>
-                <button className="bg-red-600 hover:shadow-lg px-4 py-2 text-lg font-semibold text-white  rounded-full">
+                <button
+                  className="bg-red-600 hover:shadow-lg px-4 py-2 text-lg font-semibold text-white  rounded-full"
+                  onClick={() => handleDeleteOperation(e.name)}
+                >
                   X
                 </button>
               </div>

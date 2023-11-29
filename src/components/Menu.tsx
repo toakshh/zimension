@@ -20,7 +20,12 @@ type AllProjects = { name: string; operations: CurrentProjectType }[];
 type PropsCheck = {
   allProjects: AllProjects;
   setAllProjects: React.Dispatch<React.SetStateAction<AllProjects>>;
-  setCurrentProject: React.Dispatch<React.SetStateAction<CurrentProjectType>>;
+  setCurrentProject: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      operations: { name: string; count: number }[];
+    }>
+  >;
 };
 
 const Menu = (props: PropsCheck) => {
