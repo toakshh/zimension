@@ -1,8 +1,8 @@
-assignment app
+---------Assignment project----------
 
 # Zimension
 
-Welcome to Zimension, a sleek and modern web application built with React, TypeScript, and Vite. This project offers a minimal yet robust setup to get you started with React in a Vite environment, complete with Hot Module Replacement (HMR) and essential ESLint rules.
+Welcome to Zimension, a todo kind of app which is used to keep track of projects and its operations. It is a sleek and modern web application built with React, TypeScript, and Vite. This project offers a minimal yet robust setup to get you started with React in a Vite environment, complete with Hot Module Replacement (HMR) and essential ESLint rules.
 
 ## Tech Stack
 
