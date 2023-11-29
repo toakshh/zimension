@@ -126,15 +126,13 @@ const Sidebar = (props: PropsType) => {
         </Button>
       </form>
       {/* closing button */}
-      <Button style="absolute" classProp="btn-classic" clickProp={handleSlide}>
-        x
-      </Button>
-      {/* <button
-        onClick={() => setSlide(!slide)}
-        className="bg-white px-4 py-2 rounded-full absolute lg:top-10 lg:-left-5  -top-5 left-5 hover:bg-red-400"
+      <Button
+        style={{ position: "absolute" }}
+        classProp="btn-classic"
+        clickProp={handleSlide}
       >
         x
-      </button> */}
+      </Button>
     </aside>
   );
 };

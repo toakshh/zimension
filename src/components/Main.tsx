@@ -58,12 +58,13 @@ const Main = (props: customType) => {
                 <div className="bg-gray-700 text-xl text-white font-semibold py-3 px-10 rounded-md">
                   {e.count}
                 </div>
-                <button
-                  className="bg-red-600 hover:shadow-lg px-4 py-2 text-lg font-semibold text-white  rounded-full"
-                  onClick={() => handleDeleteOperation(e.name)}
+                <Button
+                  clickProp={() => handleDeleteOperation(e.name)}
+                  classProp="btn-danger"
+                  style={{ padding: "8px" }}
                 >
                   X
-                </button>
+                </Button>
               </div>
             );
           }
@@ -74,12 +75,6 @@ const Main = (props: customType) => {
       <Button clickProp={handleSlide} classProp="btn-classic">
         +
       </Button>
-      {/* <button
-        onClick={() => setSlide(!slide)}
-        className="rounded-full shadow-2xl bg-white px-5 py-3 text-2xl hover:bg-slate-300 "
-      >
-        +
-      </button> */}
     </main>
   );
 };
