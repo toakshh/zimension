@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { memo, useEffect, useState } from "react";
 import { dropDownValues } from "../constant/constant";
+import Button from "./Button";
 
 // type AllProjects = { name: string; operations: [] }[];
 type CurrentProjectType = { name: string; count: number }[];
@@ -74,6 +75,9 @@ const Sidebar = (props: PropsType) => {
     }
   };
 
+  // handle slide
+  const handleSlide = () => setSlide(!slide);
+
   useEffect(() => {
     // updating allProject list once the operations is added
     setAllProjects((prevProjects) => {
@@ -117,21 +121,20 @@ const Sidebar = (props: PropsType) => {
             </option>
           ))}
         </select>
-        <button
-          type="submit"
-          className="btn-danger rounded-md hover:hover-cards shadow-2xl"
-          onClick={handleAdd}
-        >
+        <Button classProp="btn-danger" clickProp={handleAdd}>
           Add
-        </button>
+        </Button>
       </form>
       {/* closing button */}
-      <button
+      <Button style="absolute" classProp="btn-classic" clickProp={handleSlide}>
+        x
+      </Button>
+      {/* <button
         onClick={() => setSlide(!slide)}
         className="bg-white px-4 py-2 rounded-full absolute lg:top-10 lg:-left-5  -top-5 left-5 hover:bg-red-400"
       >
         x
-      </button>
+      </button> */}
     </aside>
   );
 };

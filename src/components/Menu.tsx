@@ -4,6 +4,7 @@ import React, { memo, useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import ModalComponent from "./ModalComponent";
+import Button from "./Button";
 
 /**
  *Menu Section of the app
@@ -92,13 +93,10 @@ const Menu = (props: PropsCheck) => {
             }
           )}
         </div>
-
-        <button
-          onClick={onOpenModal}
-          className="btn-danger rounded-md hover:hover-cards shadow-2xl"
-        >
+        <Button classProp="btn-danger" clickProp={onOpenModal}>
           Create new
-        </button>
+        </Button>
+
         <Modal open={open} onClose={onCloseModal} center>
           <ModalComponent
             btnName={"Create Project"}

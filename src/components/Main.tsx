@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import { memo } from "react";
+import Button from "./Button";
 
 type customType = {
   setSlide: (para: boolean) => void;
@@ -24,6 +25,11 @@ const Main = (props: customType) => {
     onDeleteOperation(operationName);
   };
   // console.log(allProjects);
+
+  // handleSlide
+  const handleSlide = () => {
+    setSlide(!slide);
+  };
 
   return (
     <main className="bg-gray-400 lg:w-[55%] w-full p-10 flex flex-col justify-center items-center gap-10   md:min-h-screen h-full">
@@ -65,12 +71,15 @@ const Main = (props: customType) => {
       )}
 
       {/* new operation section */}
-      <button
+      <Button clickProp={handleSlide} classProp="btn-classic">
+        +
+      </Button>
+      {/* <button
         onClick={() => setSlide(!slide)}
         className="rounded-full shadow-2xl bg-white px-5 py-3 text-2xl hover:bg-slate-300 "
       >
         +
-      </button>
+      </button> */}
     </main>
   );
 };
